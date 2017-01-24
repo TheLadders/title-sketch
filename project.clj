@@ -7,4 +7,5 @@
                  [clj-time "0.12.2"]
                  [clj-http "2.3.0"]
                  [org.clojure/data.json "0.2.6"]
-                 [clucy "0.4.0"]])
+                 [clucy "0.4.0"]
+                 [ng.util "0.12.1"]])
