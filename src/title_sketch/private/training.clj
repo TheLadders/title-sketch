@@ -31,4 +31,16 @@
             :bespoke-title (load-csv *bespoke-title-path*)
             :jd-title (load-csv *jd-title-path*)))))
 
-(defn )
+
+(defn index
+  []
+  (let [index (clucy/memory-index)
+        training-data (init-data)]
+    (map (fn [x] (clucy/add index x)) (:bespoke-title training-data))
+    (map (fn [y] (assoc y
+                        :clean-title
+                        (-> (clucy/search index (:title y) 1)
+                            first
+                            :job_title)))
+         (take 100 (:jd-title training-data)))
+    ))
