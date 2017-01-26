@@ -2,8 +2,7 @@
   (:require [clojure.tools.namespace.repl :refer :all]
             [clojure.string :as cstr]
 
-            [title-sketch.rh-utils :as rhu]
-            [title-sketch.data :as data]))
+            [title-sketch.public.api :as api]))
 
 
 (def test "Hello World")
