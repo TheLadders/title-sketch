@@ -8,13 +8,46 @@
       <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/resources" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/dev-resources" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/dev" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/test" isTestSource="true" />
       <excludeFolder url="file://$MODULE_DIR$/target" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="Leiningen: cheshire:5.6.3" level="project" />
+    <orderEntry type="library" name="Leiningen: clj-http:2.3.0" level="project" />
+    <orderEntry type="library" name="Leiningen: clj-time:0.13.0" level="project" />
+    <orderEntry type="library" name="Leiningen: clj-tuple:0.2.2" level="project" />
     <orderEntry type="library" name="Leiningen: clojure-complete:0.2.4" level="project" />
-    <orderEntry type="library" name="Leiningen: org.clojure/clojure:1.8.0" level="project" />
+    <orderEntry type="library" name="Leiningen: clucy:0.4.0" level="project" />
+    <orderEntry type="library" name="Leiningen: com.fasterxml.jackson.core/jackson-core:2.7.5" level="project" />
+    <orderEntry type="library" name="Leiningen: com.fasterxml.jackson.dataformat/jackson-dataformat-cbor:2.7.5" level="project" />
+    <orderEntry type="library" name="Leiningen: com.fasterxml.jackson.dataformat/jackson-dataformat-smile:2.7.5" level="project" />
+    <orderEntry type="library" name="Leiningen: commons-codec:1.10" level="project" />
+    <orderEntry type="library" name="Leiningen: commons-io:2.5" level="project" />
+    <orderEntry type="library" name="Leiningen: commons-logging:1.2" level="project" />
+    <orderEntry type="library" name="Leiningen: info.debatty/java-string-similarity:0.18" level="project" />
+    <orderEntry type="library" name="Leiningen: jakarta-regexp:1.4" level="project" />
+    <orderEntry type="library" name="Leiningen: joda-time:2.9.7" level="project" />
+    <orderEntry type="library" name="Leiningen: net.jcip/jcip-annotations:1.0" level="project" />
+    <orderEntry type="library" name="Leiningen: ng.util:0.12.1" level="project" />
+    <orderEntry type="library" name="Leiningen: org.apache.commons/commons-lang3:3.4" level="project" />
+    <orderEntry type="library" name="Leiningen: org.apache.httpcomponents/httpclient:4.5.2" level="project" />
+    <orderEntry type="library" name="Leiningen: org.apache.httpcomponents/httpcore:4.4.5" level="project" />
+    <orderEntry type="library" name="Leiningen: org.apache.httpcomponents/httpmime:4.5.2" level="project" />
+    <orderEntry type="library" name="Leiningen: org.apache.lucene/lucene-analyzers-common:4.2.0" level="project" />
+    <orderEntry type="library" name="Leiningen: org.apache.lucene/lucene-core:4.2.0" level="project" />
+    <orderEntry type="library" name="Leiningen: org.apache.lucene/lucene-highlighter:4.2.0" level="project" />
+    <orderEntry type="library" name="Leiningen: org.apache.lucene/lucene-memory:4.2.0" level="project" />
+    <orderEntry type="library" name="Leiningen: org.apache.lucene/lucene-queries:4.2.0" level="project" />
+    <orderEntry type="library" name="Leiningen: org.apache.lucene/lucene-queryparser:4.2.0" level="project" />
+    <orderEntry type="library" name="Leiningen: org.apache.lucene/lucene-sandbox:4.2.0" level="project" />
+    <orderEntry type="library" name="Leiningen: org.clojure/clojure:1.9.0-alpha14" level="project" />
+    <orderEntry type="library" name="Leiningen: org.clojure/tools.namespace:0.2.11" level="project" />
     <orderEntry type="library" name="Leiningen: org.clojure/tools.nrepl:0.2.12" level="project" />
+    <orderEntry type="library" name="Leiningen: potemkin:0.4.3" level="project" />
+    <orderEntry type="library" name="Leiningen: riddley:0.1.12" level="project" />
+    <orderEntry type="library" name="Leiningen: slingshot:0.12.2" level="project" />
+    <orderEntry type="library" name="Leiningen: tigris:0.1.1" level="project" />
   </component>
 </module>
