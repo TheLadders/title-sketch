@@ -1,11 +1,7 @@
-(ns title-sketch.rh-utils
+(ns title-sketch.private.rh-utils
   (:require [clojure.java.io :as jio]
             [clojure.string :as cstr]
-            [title-sketch.data :as data])
-  (:import org.apache.commons.lang3.StringEscapeUtils
-           (info.debatty.java.stringsimilarity
-            QGram
-            NGram)))
+            [title-sketch.private.data :as data]))
 
 
 
@@ -20,7 +16,7 @@
 ;----------PRE PROCESS----------------------------------------------------------
 ;-------------------------------------------------------------------------------
 
-(defn- replace-html
+(defn replace-html
   "Search for raw HTML (ascii codes) and replace with respective ascii character."
   [title]
   (reduce (fn [new-title [hex display]]
@@ -36,22 +32,22 @@
             title (doall (map (juxt :original :replacement) replacement-set))))
 ; DOES DOALL THIS MAKE SENSE HERE?!?!?!?!
 
-(defn- stopword-replacement
+(defn stopword-replacement
   "Replace all stopwords using word-replacement function."
   [title]
   (word-replacement title stopword-rep))
 
-(defn- abbreviation-replacement
+(defn abbreviation-replacement
   "Replace all abbreviations using word-replacement function."
   [title]
   (word-replacement title abbr-rep))
 
-(defn- rep-symbol-space
+(defn rep-symbol-space
   "Remove all characters except for numbers and letters."
   [title]
   (cstr/replace title #"[^0-9a-z]" " "))
 
-(defn- remove-whitespace
+(defn remove-whitespace
   "Remove all white space and leave only single spaces between words.
   This is due to the remove-symbols function."
   [title]
@@ -67,7 +63,7 @@
   [n]
   (:name (nth levels n)))
 
-(defn- remove-level
+(defn remove-level
   "Function to remove title from a cleaned job title.
   This is the second to last step before string similarity calculated."
   [title]
@@ -76,7 +72,7 @@
       (>= i (count levels)) (remove-whitespace new-title)
       :else (recur (inc i) (cstr/replace new-title (re-pattern (level-indexer i)) "")))))
 
-(defn- remove-duplicates
+(defn remove-duplicates
   "Function to remove duplicate words from job title.
   This is the last step before string similarity calculated."
   [title]
@@ -102,7 +98,7 @@
   [title n]
   (re-pos (re-pattern (:match (nth level-regex n))) title))
 
-(defn- match-level-id
+(defn match-level-id
   "Loop through all level-regex and return any matches.
   If none appear, then return 24 which indicates no match and level-group 5"
   [title]
@@ -112,68 +108,7 @@
      (empty? (match-level title i)) (recur (inc i) ids)
      :else (recur (inc i) (conj ids (:level_id (nth level-regex i)))))))
 
-(defn- filter-level-map
+(defn filter-level-map
   "Filter level-map by level-id and return full entry"
   [n]
   (filter #(= (% :level_id) n) level-map))
-
-
-
-
-
-
-;-------------------------------------------------------------------------------
-;----------EXTERNAL FUNCTIONS---------------------------------------------------
-;-------------------------------------------------------------------------------
-(defn pre-process-title
-  "Apply series of functions to a job title."
-  [title]
-  (-> title
-    replace-html
-    cstr/lower-case
-    stopword-replacement
-    abbreviation-replacement
-    rep-symbol-space
-    remove-whitespace))
-
-
-(defn post-process-title
-  "Process title to have similarity performed."
-  [title]
-  (->
-    title
-    pre-process-title
-    remove-level
-    remove-duplicates))
-
-(defn get-level
-  "Use clean title to get level-ids and map to level-maps for a given title"
-  [title]
-  (->
-    title
-    pre-process-title
-    match-level-id
-    filter-level-map))
-
-(defn get-level-group
-  "Use levels from get-levels to extract only the level group."
-  [title]
-  (first (map :level_group (get-level title))))
-
-
-;(def dig (QGram. 2))
-;(.distance dig "title1" "title2")
-; (def qgram-6 (QGram. 6))
-(defn ngram-similarity
-  "Find distance between two titles.
-  Optional third parameter c when set to 1 uses clean titles. Otherwise default of 0 is input title.
-  Optional fourth parameter q is number n of n-grams. Default is 1."
-  ([t1 t2] (ngram-similarity t1 t2 0 1))
-  ([t1 t2 c] (ngram-similarity t1 t2 c 1))
-  ([t1 t2 c n]
-    (let [ngram-n (NGram. n)]
-      (cond
-        (= c 0) (.distance ngram-n t1 t2)
-        (= c 1) (.distance ngram-n (pre-process-title t1) (pre-process-title t2))))))
-; .7 Similarity Score
-; What to do with the word consultant
