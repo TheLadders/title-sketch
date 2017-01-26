@@ -6,6 +6,7 @@
                  [org.clojure/data.json "0.2.6"]
                  [clj-http "2.3.0"]
                  [cheshire "5.6.3"]
+                 [org.clojure/data.json "0.2.6"]
                  [clucy "0.4.0"]
                  [ng.util "0.12.1"]
                  [clj-time "0.13.0"]]
