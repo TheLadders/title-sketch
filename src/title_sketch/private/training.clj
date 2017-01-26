@@ -37,10 +37,13 @@
   (let [index (clucy/memory-index)
         training-data (init-data)]
     (map (fn [x] (clucy/add index x)) (:bespoke-title training-data))
-    (map (fn [y] (assoc y
+    (map (fn [y] (try
+                   (assoc y
                         :clean-title
                         (-> (clucy/search index (:title y) 1)
                             first
-                            :job_title)))
-         (take 100 (:jd-title training-data)))
+                            :job_title))
+                   (catch Exception e (prn "error"))
+                   (finally nil)))
+         (:jd-title training-data))
     ))
