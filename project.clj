@@ -3,6 +3,7 @@
   :dependencies [[org.clojure/clojure "1.9.0-alpha14"]
                  [org.apache.commons/commons-lang3 "3.4"]
                  [info.debatty/java-string-similarity "0.18"]
+                 [org.clojure/data.json "0.2.6"]
                  [clj-http "2.3.0"]
                  [cheshire "5.6.3"]
                  [org.clojure/data.json "0.2.6"]
