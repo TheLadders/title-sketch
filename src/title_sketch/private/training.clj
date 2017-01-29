@@ -69,4 +69,30 @@
   []
   (if (elastic/index-exists? (:index-name *elastic-mapping*))
     (elastic/delete-index (:index-name *elastic-mapping*)))
-  (elastic/create-index "job-title" *elastic-mapping*))
+  (elastic/create-index "job-title" *elastic-mapping*)
+  (->> (map (fn [document] [(:job-title-id document) document]) (:bespoke-title (init-data)))
+       (elastic/bulk-add-documents (:index-name *elastic-mapping*) (:index-name *elastic-mapping*))))
+
+(defn search
+  [search-term]
+  (-> (elastic/search (:index-name *elastic-mapping*) {:query {:match {"job-title" search-term}}})
+      :hits
+      :hits
+      first
+      :_source))
+
+;;(defn add-bespoke-title
+;;  []
+;;  (->> (:jd-title (init-data))
+;;       (take 100)
+;;      (as-> record (map (fn [row] (assoc row
+;;                                          :clean-title
+;;                                          (-> (search (:title row))
+;;                                              :job-title))) record))))
+
+
+(defn add-bespoke-title
+  []
+  (->> (:jd-title (init-data))
+       (map (fn [row] (assoc row :clean-title (-> (search (:title row))
+                                                          :job-title))))))
