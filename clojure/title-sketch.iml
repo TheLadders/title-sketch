@@ -43,6 +43,7 @@
     <orderEntry type="library" name="Leiningen: org.apache.lucene/lucene-queryparser:4.2.0" level="project" />
     <orderEntry type="library" name="Leiningen: org.apache.lucene/lucene-sandbox:4.2.0" level="project" />
     <orderEntry type="library" name="Leiningen: org.clojure/clojure:1.9.0-alpha14" level="project" />
+    <orderEntry type="library" name="Leiningen: org.clojure/data.json:0.2.6" level="project" />
     <orderEntry type="library" name="Leiningen: org.clojure/tools.namespace:0.2.11" level="project" />
     <orderEntry type="library" name="Leiningen: org.clojure/tools.nrepl:0.2.12" level="project" />
     <orderEntry type="library" name="Leiningen: potemkin:0.4.3" level="project" />
